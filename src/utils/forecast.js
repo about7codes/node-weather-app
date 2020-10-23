@@ -1,24 +1,5 @@
 const request = require("request");
 
-// const forecast = (lat, long, callback) => {
-//   const url = `https://api.climacell.co/v3/weather/realtime?lat=${encodeURIComponent(
-//     lat
-//   )}&lon=${encodeURIComponent(
-//     long
-//   )}&unit_system=si&fields=temp&apikey=Z8E31R0Bx1Q1rxrBvBHaTETFQJriJr4T`;
-
-//   request({ url: url, json: true }, (error, response) => {
-//     if (error) {
-//       callback("Unable to connect Weather API", undefined);
-//     } else if (response.body.message) {
-//       callback("Unable to find yo location.", undefined);
-//     } else {
-//       const chall = `It is currently ${response.body.temp.value} degrees out.`;
-//       callback(undefined, chall);
-//     }
-//   });
-// };
-
 const forecast = (latitude, longitude, callback) => {
   const url =
     "https://api.darksky.net/forecast/76733e9c3ca293ed6de639d3d5bf874f/" +
@@ -33,11 +14,12 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback("Unable to find the location.", undefined);
     } else {
-      callback(undefined, {
-        summary: body.daily.data[0].summary,
-        temperature: body.currently.temperature,
-        precipProbability: body.currently.precipProbability,
-      });
+      const phrase = `${body.daily.data[0].summary} It is currently ${body.currently.temperature}
+                      degrees out. The high today is ${body.daily.data[0].temperatureHigh} with a low of 
+                      ${body.daily.data[0].temperatureLow} . There is a ${body.currently.precipProbability}% 
+                      chance of rain.`;
+
+      callback(undefined, phrase)
     }
   });
 };

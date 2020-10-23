@@ -21,7 +21,7 @@ weatherForm.addEventListener('submit', (e)=>{
             }else{
                 console.log(data)
                 msg1.textContent = data.location;
-                msg2.textContent = data.forcast.summary +' '+ data.forcast.temperature +' degrees celsius.';
+                msg2.textContent = data.forecast;
             }
         });
     })
