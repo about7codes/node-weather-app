@@ -1,4 +1,4 @@
-// Finished Vid 9.6
+// Finished Vid 9.8
 
 const path = require('path');
 const exress = require('express');
@@ -27,14 +27,14 @@ app.use(exress.static(publicDir))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'weather',
-        name: 'Jack Jones'
+        name: 'About7codes'
     });
 })
 
 app.get('/about', ( req, res)=>{
     res.render('about', {
         title: 'About me',
-        name: 'Mashone Jos'
+        name: 'About7codes'
     })
 })
 
@@ -42,7 +42,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         msg : 'This is A Message !',
         title: 'Help page',
-        name: 'Jakes'
+        name: 'About7codes'
     })
 })
 
@@ -97,7 +97,7 @@ app.get('/products', (req, res) => {
 app.get('/help/*', (req, res)=>{
     res.render('404', {
         title: 'Help 404',
-        name: 'Jakes',
+        name: 'About7codes',
         msg: 'Help page not found'
     })
 })
@@ -105,7 +105,7 @@ app.get('/help/*', (req, res)=>{
 app.get('*', (req, res) => {
     res.render('404', {
         title: '404 Page',
-        name: 'Jakes',
+        name: 'About7codes',
         msg: 'Page not found'
     })
 })

@@ -19,8 +19,9 @@ weatherForm.addEventListener('submit', (e)=>{
             if(data.error){
                 msg1.textContent = data.error;
             }else{
+                console.log(data)
                 msg1.textContent = data.location;
-                msg2.textContent = data.forcast.summary
+                msg2.textContent = data.forcast.summary +' '+ data.forcast.temperature +' degrees celsius.';
             }
         });
     })
